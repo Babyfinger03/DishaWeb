@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('wallpaper.jpg');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            position: relative;
+        }
+        #goBack {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #goBack:hover {
+            background-color: #0056b3;
+        }
+        .question {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .options {
+            margin-bottom: 20px;
+        }
+        .option {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .selected {
+            background-color: yellow; /* Change the color as desired */
+        }
+        #resultTab {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #resultTab h3 {
+            margin-top: 0;
+        }
+        #resultTab ol {
+            padding-left: 20px;
+        }
+        #resultTab li {
+            margin-bottom: 5px;
+        }
+        #resultTab span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <button id="goBack" onclick="goBack()">Go Back</button>
+    <div class="container">
+        
+        
+      
+
+        
+        <div class="question" id="question1">Question 1: Situation: You've been tasked with creating a compelling article about a recent travel destination. How would you approach this task?</div>
+        <div class="options">
+            <label class="option"><input type="checkbox" name="q1_option" value="A" onchange="highlight(this)"> A) Use descriptive language to vividly paint the picture of the destination.</label>
+            <label class="option"><input type="checkbox" name="q1_option" value="B" onchange="highlight(this)"> B) Provide a list of facts and statistics about the destination.</label>
+            <label class="option"><input type="checkbox" name="q1_option" value="C" onchange="highlight(this)"> C) Include personal opinions without factual backing.</label>
+            <label class="option"><input type="checkbox" name="q1_option" value="D" onchange="highlight(this)"> D) Focus solely on one aspect of the destination.</label>
+            <label class="option"><input type="checkbox" name="q1_option" value="E" onchange="highlight(this)"> E) Use complex vocabulary to impress the readers.</label>
+        </div>
+
+        <div class="question" id="question2">Question 2: Situation: While traveling, your original plan is disrupted due to unexpected weather conditions. What would you do?</div>
+        <div class="options">
+            <label class="option"><input type="checkbox" name="q2_option" value="A" onchange="highlight(this)"> A) Find alternative indoor activities to enjoy.</label>
+            <label class="option"><input type="checkbox" name="q2_option" value="B" onchange="highlight(this)"> B) Continue with the original plan regardless of the weather.</label>
+            <label class="option"><input type="checkbox" name="q2_option" value="C" onchange="highlight(this)"> C) Cancel the trip and return home.</label>
+            <label class="option"><input type="checkbox" name="q2_option" value="D" onchange="highlight(this)"> D) Wait for the weather to improve without making any changes.</label>
+            <label class="option"><input type="checkbox" name="q2_option" value="E" onchange="highlight(this)"> E) Explore outdoor activities regardless of the weather.</label>
+        </div>
+
+        <div class="question" id="question3">Question 3: Situation: As a tour guide, you're leading a group of tourists through a historical site. How would you engage your audience effectively?</div>
+        <div class="options">
+            <label class="option"><input type="checkbox" name="q3_option" value="A" onchange="highlight(this)"> A) Encourage interaction by asking questions and sharing interesting facts.</label>
+            <label class="option"><input type="checkbox" name="q3_option" value="B" onchange="highlight(this)"> B) Speak in a monotone voice to maintain professionalism.</label>
+            <label class="option"><input type="checkbox" name="q3_option" value="C" onchange="highlight(this)"> C) Avoid eye contact to reduce nervousness.</label>
+            <label class="option"><input type="checkbox" name="q3_option" value="D" onchange="highlight(this)"> D) Rush through the tour to save time.</label>
+            <label class="option"><input type="checkbox" name="q3_option" value="E" onchange="highlight(this)"> E) Read from a script to ensure accuracy.</label>
+        </div>
+
+        <div class="question" id="question4">Question 4: Situation: You have a deadline to submit an article for a travel magazine. How would you manage your time effectively?</div>
+        <div class="options">
+            <label class="option"><input type="checkbox" name="q4_option" value="A" onchange="highlight(this)"> A) Break down the writing process into manageable tasks and set deadlines for each.</label>
+            <label class="option"><input type="checkbox" name="q4_option" value="B" onchange="highlight(this)"> B) Start writing the article a day before the deadline.</label>
+            <label class="option"><input type="checkbox" name="q4_option" value="C" onchange="highlight(this)"> C) Spend excessive time researching irrelevant information.</label>
+            <label class="option"><input type="checkbox" name="q4_option" value="D" onchange="highlight(this)"> D) Procrastinate and wait until the last minute to begin.</label>
+            <label class="option"><input type="checkbox" name="q4_option" value="E" onchange="highlight(this)"> E) Submit the article without proofreading.</label>
+        </div>
+
+        <div class="question" id="question5">Question 5: Situation: As a travel blogger, how would you make your content stand out in a crowded market?</div>
+        <div class="options">
+            <label class="option"><input type="checkbox" name="q5_option" value="A" onchange="highlight(this)"> A) Experiment with different writing styles and formats.</label>
+            <label class="option"><input type="checkbox" name="q5_option" value="B" onchange="highlight(this)"> B) Stick to traditional travel destinations and topics.</label>
+            <label class="option"><input type="checkbox" name="q5_option" value="C" onchange="highlight(this)"> C) Use generic stock photos to accompany your posts.</label>
+            <label class="option"><input type="checkbox" name="q5_option" value="D" onchange="highlight(this)"> D) Replicate content from other popular bloggers.</label>
+            <label class="option"><input type="checkbox" name="q5_option" value="E" onchange="highlight(this)"> E) Avoid sharing personal experiences.</label>
+        </div>
+
+        <div class="question" id="question6">Question 6: Situation: You're attending a travel industry conference. How would you approach networking with other professionals?</div>
+        <div class="options">
+            <label class="option"><input type="checkbox" name="q6_option" value="A" onchange="highlight(this)"> A) Initiate conversations and actively listen to others' experiences and ideas.</label>
+            <label class="option"><input type="checkbox" name="q6_option" value="B" onchange="highlight(this)"> B) Exchange contact information without engaging in meaningful conversations.</label>
+            <label class="option"><input type="checkbox" name="q6_option" value="C" onchange="highlight(this)"> C) Remain isolated and avoid interacting with others.</label>
+            <label class="option"><input type="checkbox" name="q6_option" value="D" onchange="highlight(this)"> D) Focus solely on promoting your own achievements.</label>
+            <label class="option"><input type="checkbox" name="q6_option" value="E" onchange="highlight(this)"> E) Leave the conference early to avoid networking opportunities.</label>
+        </div>
+
+        <div class="question" id="question7">Question 7: Situation: You're capturing footage for a travel vlog at a scenic location. How would you ensure high-quality visuals?</div>
+        <div class="options">
+            <label class="option"><input type="checkbox" name="q7_option" value="A" onchange="highlight(this)"> A) Experiment with different camera angles and perspectives.</label>
+            <label class="option"><input type="checkbox" name="q7_option" value="B" onchange="highlight(this)"> B) Use a smartphone camera without considering lighting or composition.</label>
+            <label class="option"><input type="checkbox" name="q7_option" value="C" onchange="highlight(this)"> C) Avoid capturing any footage and rely solely on narration.</label>
+            <label class="option"><input type="checkbox" name="q7_option" value="D" onchange="highlight(this)"> D) Rush through filming without planning shots in advance.</label>
+            <label class="option"><input type="checkbox" name="q7_option" value="E" onchange="highlight(this)"> E) Record shaky footage without stabilizing equipment.</label>
+        </div>
+
+        <div class="question" id="question8">Question 8: Situation: You're writing an article about a cultural festival in a foreign country. How would you ensure respectful representation of the culture?</div>
+        <div class="options">
+            <label class="option"><input type="checkbox" name="q8_option" value="A" onchange="highlight(this)"> A) Consult local experts and immerse yourself in the culture to gain understanding.</label>
+            <label class="option"><input type="checkbox" name="q8_option" value="B" onchange="highlight(this)"> B) Generalize cultural practices without researching their significance.</label>
+            <label class="option"><input type="checkbox" name="q8_option" value="C" onchange="highlight(this)"> C) Avoid mentioning cultural aspects to prevent offending anyone.</label>
+            <label class="option"><input type="checkbox" name="q8_option" value="D" onchange="highlight(this)"> D) Include stereotypes and misconceptions about the culture.</label>
+            <label class="option"><input type="checkbox" name="q8_option" value="E" onchange="highlight(this)"> E) Disregard cultural differences and focus solely on personal opinions.</label>
+        </div>
+        
+        <button class="submit-btn" onclick="submitAnswers()">Submit</button>
+
+        <div id="resultTab" style="display: none;">
+            <h3>Result:</h3>
+            <ol>
+                <li><span style="color: #4CAF50;">Travel Blogger (85%)</span></li>
+                <li><span style="color: #f44336;">English Teacher (23%)</span></li>
+                <li><span style="color: #2196F3;">Tour Guide (60%)</span></li>
+                <li><span style="color: #FF9800;">Book reviewer (30%)</span></li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        function highlight(checkbox) {
+            if (checkbox.checked) {
+                checkbox.parentNode.classList.add('selected');
+            } else {
+                checkbox.parentNode.classList.remove('selected');
+            }
+        }
+
+        function submitAnswers() {
+            document.getElementById('resultTab').style.display = 'block';
+            // Scroll to the result tab for better visibility
+            document.getElementById('resultTab').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
+
+

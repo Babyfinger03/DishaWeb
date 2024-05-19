@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counselor Recommendation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-image: url('wallpaper.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 600px;
+            margin: 50px auto;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        .options {
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .counselor-box {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+        }
+
+        .counselor-box img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .counselor-info {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Counselor Recommendation</h1>
+        <form id="counselor-form">
+            <h2>Counselling Type</h2>
+            <div class="options">
+                <label>
+                    <input type="radio" name="counselling-type" value="directive" checked>
+                    Directive Counselling
+                </label>
+                <label>
+                    <input type="radio" name="counselling-type" value="non-directive">
+                    Non Directive Counselling
+                </label>
+                <label>
+                    <input type="radio" name="counselling-type" value="electic">
+                    Electic Counselling
+                </label>
+                <label>
+                    <input type="radio" name="counselling-type" value="individual">
+                    Individual Counselling
+                </label>
+                <label>
+                    <input type="radio" name="counselling-type" value="group">
+                    Group Counselling
+                </label>
+                <label>
+                    <input type="radio" name="counselling-type" value="educational">
+                    Educational Counselling
+                </label>
+                <label>
+                    <input type="radio" name="counselling-type" value="vocational">
+                    Vocational Counselling
+                </label>
+                <label>
+                    <input type="radio" name="counselling-type" value="placement">
+                    Placement Counselling
+                </label>
+            </div>
+
+            <h2>Gender Preference</h2>
+            <div class="options">
+                <label>
+                    <input type="radio" name="gender-preference" value="any" checked>
+                    Any
+                </label>
+                <label>
+                    <input type="radio" name="gender-preference" value="male">
+                    Male
+                </label>
+                <label>
+                    <input type="radio" name="gender-preference" value="female">
+                    Female
+                </label>
+            </div>
+
+            <button type="submit">Find Counselors</button>
+        </form>
+        <div id="recommendations"></div>
+    </div>
+
+    <script>
+        const counselorForm = document.getElementById('counselor-form');
+        const recommendationsDiv = document.getElementById('recommendations');
+
+        // Sample counselor data
+        const counselors = [
+            {
+                name: 'John Doe',
+                age: 35,
+                designation: 'Clinical Psychologist',
+                about: 'Experienced in cognitive-behavioral therapy and family counseling.'
+            },
+            {
+                name: 'Jane Smith',
+                age: 42,
+                designation: 'Marriage and Family Therapist',
+                about: 'Specializes in couples counseling and relationship issues.'
+            },
+            {
+                name: 'Michael Johnson',
+                age: 28,
+                designation: 'School Counselor',
+                about: 'Expertise in student counseling and career guidance.'
+            },
+            {
+                name: 'Emily Davis',
+                age: 31,
+                designation: 'Substance Abuse Counselor',
+                about: 'Helps individuals overcome addiction and substance abuse.'
+            }
+        ];
+
+        counselorForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            recommendationsDiv.innerHTML = '';
+
+            counselors.forEach((counselor) => {
+                const counselorBox = document.createElement('div');
+                counselorBox.classList.add('counselor-box');
+
+                const counselorImage = document.createElement('img');
+                counselorImage.src = 'human-icon.png';
+                counselorImage.alt = 'Counselor';
+
+                const counselorInfo = document.createElement('div');
+                counselorInfo.classList.add('counselor-info');
+
+                const counselorName = document.createElement('h3');
+                counselorName.textContent = counselor.name;
+
+                const counselorAge = document.createElement('p');
+                counselorAge.textContent = `Age: ${counselor.age}`;
+
+                const counselorDesignation = document.createElement('p');
+                counselorDesignation.textContent = `Designation: ${counselor.designation}`;
+
+                const counselorAbout = document.createElement('p');
+                counselorAbout.textContent = `About: ${counselor.about}`;
+
+                counselorInfo.appendChild(counselorName);
+                counselorInfo.appendChild(counselorAge);
+                counselorInfo.appendChild(counselorDesignation);
+                counselorInfo.appendChild(counselorAbout);
+
+                counselorBox.appendChild(counselorImage);
+                counselorBox.appendChild(counselorInfo);
+
+                recommendationsDiv.appendChild(counselorBox);
+            });
+        });
+    </script>
+</body>
+</html>

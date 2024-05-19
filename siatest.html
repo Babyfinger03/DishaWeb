@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self Interest Analysis Test</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('wallpaper.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+            position: relative;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 30px;
+        }
+        .options {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+            margin-bottom: 20px;
+        }
+        .options div {
+            flex: 1;
+            margin: 0 10px;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1em;
+            height: 200px; /* Adjust height to show multiple options */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #tags {
+            margin-top: 20px;
+            width: 80%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+        #tags h2 {
+            margin-bottom: 10px;
+        }
+        #tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tag {
+            background-color: #007bff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        #go-back {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Go Back button -->
+    <button id="go-back" onclick="goBack()">Go Back</button>
+
+    <h1>Self Interest Analysis Test</h1>
+    <div class="options">
+        <div>
+            <label for="hobbies">Hobbies:</label>
+            <select id="hobbies" multiple>
+                <option>Reading</option>
+                <option>Gardening</option>
+                <option>Cooking</option>
+                <option>Baking</option>
+                <option>Photography</option>
+                <option>Painting</option>
+                <option>Drawing</option>
+                <option>Knitting</option>
+                <option>Crocheting</option>
+                <option>Hiking</option>
+                <option>Traveling</option>
+                <option>Writing</option>
+                <option>Playing a Musical Instrument</option>
+                <option>Dancing</option>
+                <option>Bird Watching</option>
+                <option>Fishing</option>
+                <option>Woodworking</option>
+                <option>Pottery</option>
+                <option>Cycling</option>
+                <option>Running</option>
+                <option>Yoga</option>
+                <option>Scrapbooking</option>
+                <option>Calligraphy</option>
+                <option>Sewing</option>
+                <option>Collecting (stamps, coins, etc.)</option>
+                <option>Playing Board Games</option>
+                <option>Playing Video Games</option>
+                <option>Puzzles</option>
+                <option>Volunteering</option>
+                <option>Meditation</option>
+            </select>
+        </div>
+        <div>
+            <label for="subjects">Subjects:</label>
+            <select id="subjects" multiple>
+                <option>Mathematics</option>
+                <option>English</option>
+                <option>Science</option>
+                <option>History</option>
+                <option>Geography</option>
+                <option>Biology</option>
+                <option>Chemistry</option>
+                <option>Physics</option>
+                <option>Literature</option>
+                <option>Art</option>
+                <option>Music</option>
+                <option>Physical Education</option>
+                <option>Social Studies</option>
+                <option>Computer Science</option>
+                <option>Foreign Languages</option>
+            </select>
+        </div>
+        <div>
+            <label for="career-objectives">Career Objectives:</label>
+            <select id="career-objectives" multiple>
+                <option>Fame</option>
+                <option>Money</option>
+                <option>Security</option>
+                <option>Risk</option>
+                <option>Travel</option>
+                <option>Personal Fulfillment</option>
+                <option>Creativity</option>
+                <option>Innovation</option>
+                <option>Leadership</option>
+                <option>Helping Others</option>
+                <option>Learning and Growth</option>
+                <option>Work-Life Balance</option>
+                <option>Adventure</option>
+                <option>Autonomy</option>
+                <option>Making a Difference</option>
+            </select>
+        </div>
+    </div>
+    <div id="tags">
+        <h2>Tags</h2>
+        <div id="tags-list"></div>
+        <button onclick="submitSelection()">Submit</button> 
+    </div>
+
+    <script>
+        function getSelectedOptions(selectElement) {
+            return Array.from(selectElement.selectedOptions).map(option => option.value);
+        }
+
+        document.querySelectorAll('select').forEach(selectElement => {
+            selectElement.addEventListener('change', updateTags);
+        });
+
+        function updateTags() {
+            const hobbies = getSelectedOptions(document.getElementById('hobbies'));
+            const subjects = getSelectedOptions(document.getElementById('subjects'));
+            const careerObjectives = getSelectedOptions(document.getElementById('career-objectives'));
+
+            const selectedOptions = [...hobbies, ...subjects, ...careerObjectives];
+            const totalSelections = selectedOptions.length;
+
+            const tagsList = document.getElementById('tags-list');
+            tagsList.innerHTML = '';
+
+            selectedOptions.forEach(option => {
+                const tag = document.createElement('div');
+                tag.classList.add('tag');
+                tag.textContent = option;
+                tagsList.appendChild(tag);
+            });
+
+            document.getElementById('tags').style.display = totalSelections > 0 ? 'flex' : 'none';
+        }
+
+        function submitSelection() {
+            const hobbies = getSelectedOptions(document.getElementById('hobbies'));
+            const subjects = getSelectedOptions(document.getElementById('subjects'));
+            const careerObjectives = getSelectedOptions(document.getElementById('career-objectives'));
+
+            const selectedOptions = [...hobbies, ...subjects, ...careerObjectives];
+            const totalSelections = selectedOptions.length;
+
+            if (totalSelections <= 9) {
+                alert(`You have selected:\nHobbies: ${hobbies.join(', ')}\nSubjects: ${subjects.join(', ')}\nCareer Objectives: ${careerObjectives.join(', ')}`);
+                window.location.href = 'siatest2.html'; // Redirect to siatest2.html
+            } else {
+                alert(`Please select a total of 9 options. You have selected ${totalSelections} options.`);
+            }
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

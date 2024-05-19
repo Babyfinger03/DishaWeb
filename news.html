@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('wallpaper.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+        h1 {
+            font-size: 36px;
+            color: #fff;
+        }
+        .main-section {
+            text-align: center;
+            margin-top: 50px;
+            color: #fff;
+        }
+        .career-options {
+            display: none;
+            margin-top: 20px;
+        }
+        .show-news-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        .news {
+            display: none;
+            margin-top: 20px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>NEWS SECTION</h1>
+    </header>
+    <div class="main-section">
+        <p>Get latest news and update based on your chosen career field</p>
+        <button onclick="toggleCareerOptions()">Choose Career and Age</button>
+        <div class="career-options" id="careerOptions">
+            <select id="careerSelect">
+                <option value="" disabled selected>Select a career</option>
+                <option value="Engineer">Engineer</option>
+                <option value="Doctor">Doctor</option>
+                <option value="Teacher">Teacher</option>
+                <option value="Artist">Artist</option>
+                <option value="Writer">Writer</option>
+                <option value="Chef">Chef</option>
+                <option value="Lawyer">Lawyer</option>
+                <option value="Journalist">Journalist</option>
+                <option value="Designer">Designer</option>
+                <option value="Developer">Developer</option>
+                <option value="Scientist">Scientist</option>
+                <option value="Nurse">Nurse</option>
+                <option value="Pilot">Pilot</option>
+                <option value="Entrepreneur">Entrepreneur</option>
+                <option value="Photographer">Photographer</option>
+                <option value="Athlete">Athlete</option>
+                <option value="Musician">Musician</option>
+                <option value="Architect">Architect</option>
+                <option value="Psychologist">Psychologist</option>
+                <option value="Veterinarian">Veterinarian</option>
+            </select>
+            <select id="ageSelect">
+                <option value="" disabled selected>Select an age group</option>
+                <option value="0-17">0-17</option>
+                <option value="18-25">18-25</option>
+                <option value="26-50">26-50</option>
+                <option value="50+">50+</option>
+            </select>
+        </div>
+        <button onclick="showNews()">Show News</button>
+        <div class="news" id="news">
+            <!-- News will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        function toggleCareerOptions() {
+            var careerOptions = document.getElementById("careerOptions");
+            if (careerOptions.style.display === "none") {
+                careerOptions.style.display = "block";
+            } else {
+                careerOptions.style.display = "none";
+            }
+        }
+
+        function showNews() {
+    var selectedCareer = document.getElementById("careerSelect").value;
+    var selectedAge = document.getElementById("ageSelect").value;
+    if (selectedCareer && selectedAge) {
+        var newsDiv = document.getElementById("news");
+        newsDiv.style.display = "block";
+
+        // Clear existing news articles
+        newsDiv.innerHTML = "";
+
+        // Create news articles
+        var newsArticles = [
+            {
+                headline: "The travails of becoming a pilot in India",
+                lastUpdate: "22th September, 2022",
+                content: "The challenges faced by aspiring pilots in India were highlighted, focusing on the struggles of junior pilots at Vistara due to a revised salary structure. Pilots described financial burdens, delayed training, and contractual issues, emphasizing the pressure to succeed in a demanding industry. <br><br> Follow link to know more: <a href='xyz.com'>xyz.com</a>",
+                image: "pilot1.jpg"
+            },
+            {
+                headline: "AI pilots come out in support of Vistara pilots; flight disruptions continue",
+                lastUpdate: "Not specified",
+                content: "Air India pilots expressed solidarity with Vistara pilots amidst ongoing flight cancellations. Vistara pilots faced challenges due to revised contracts reducing flying time and salaries. The situation highlighted broader issues within Tata Group aviation entities, emphasizing the need for fair compensation, improved working conditions, and stable rosters.",
+                image: "pilot2.jpg"
+            },
+            {
+                headline: "Air India sacks pilot found drunk after operating overseas flight",
+                lastUpdate: "Not specified",
+                content: "Air India terminated the services of a pilot who tested positive for alcohol consumption after operating an international flight. The airline took strict action, planning to file an FIR against the pilot for criminal behavior. The incident underscored the zero-tolerance policy towards alcohol consumption for flight crew.",
+                image: "pilot3.jpg"
+            },
+            {
+                headline: "Air India pilot grounded for three months for showing up drunk for a flight",
+                lastUpdate: "Not specified",
+                content: "An Air India pilot faced a three-month grounding after testing positive for alcohol before a Delhi to Hyderabad flight. The pilot's license would be permanently revoked if failing the alcohol test for the third time, highlighting stringent regulations to ensure flight safety and adherence to alcohol policies in aviation.",
+                image: "pilot4.jpg"
+            }
+        ];
+
+        // Loop through news articles and create HTML elements
+        for (var i = 0; i < newsArticles.length; i++) {
+            var article = newsArticles[i];
+            var articleHTML = "<div class='news-article'>" +
+                "<h2>" + article.headline + "</h2>" +
+                "<p>Last update: " + article.lastUpdate + "</p>" +
+                "<img src='" + article.image + "' alt='" + article.headline + "'>" +
+                "<p>" + article.content + "</p>" +
+                "</div>";
+            newsDiv.innerHTML += articleHTML;
+        }
+    } else {
+        alert("Please select a career and age group first.");
+    }
+}
+
+    </script>
+    
+    
+</body>
+</html>
